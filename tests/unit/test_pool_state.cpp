@@ -42,9 +42,15 @@ TEST(PoolState, InitializeFailsWithBadConnection)
 TEST(PoolState, DoubleShutdownSafe)
 {
     PgppPool pool;
-    pool.shutdown();  // Not initialized — should be no-op
-    pool.shutdown();  // Second call — still safe
-    // No crash = pass
+    EXPECT_FALSE(pool.isInitialized());
+
+    pool.shutdown();  // m_initialized is false → exchange(false) returns false → early return
+    EXPECT_FALSE(pool.isInitialized());
+    EXPECT_EQ(pool.totalConnections(), 0u);
+    EXPECT_EQ(pool.queuedRequests(), 0u);
+
+    pool.shutdown();  // Same guard, still no-op
+    EXPECT_FALSE(pool.isInitialized());
 }
 
 // ── UT-POOL-004: Operations on uninitialized pool don't crash ───────────────

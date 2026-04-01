@@ -163,7 +163,10 @@ def main():
     if args.clean and not args.skip_build:
         if build_dir.exists():
             log(f"Cleaning {build_dir}...")
-            shutil.rmtree(build_dir)
+            def _rm_readonly(func, path, exc_info):
+                os.chmod(path, 0o700)
+                func(path)
+            shutil.rmtree(build_dir, onexc=_rm_readonly)
 
     # --- Configure & Build ---
 

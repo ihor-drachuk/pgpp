@@ -149,6 +149,12 @@ pgpp/
   vcpkg.json            vcpkg manifest (libpq dependency)
 ```
 
+## Documentation
+
+- **[docs/SPECIFICATION.md](docs/SPECIFICATION.md)** — Full API specification with requirements (REQ-PGPP-NNN)
+- **[docs/TESTING_ROADMAP.md](docs/TESTING_ROADMAP.md)** — Test catalog and infrastructure details
+- **[docs/usage.md](docs/usage.md)** — Usage examples
+
 ## How it fits together
 
 When you consume pgpp via **FetchContent** in another project, `vcpkg.json` and `CMakePresets.json` are ignored entirely — your project provides `PostgreSQL::PostgreSQL` through whatever means it uses (vcpkg, system packages, etc.).

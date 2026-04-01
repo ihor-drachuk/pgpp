@@ -101,6 +101,13 @@ Single connection wrapper. Used internally by pool workers. Direct use is for te
 - **[docs/SPECIFICATION.md](docs/SPECIFICATION.md)** -- Full API spec with REQ-PGPP-NNN requirements
 - **[docs/TESTING_ROADMAP.md](docs/TESTING_ROADMAP.md)** -- Unit and integration test plan
 
+## Documentation Maintenance
+
+When changing API, tests, or build system — update the corresponding docs:
+- **[docs/SPECIFICATION.md](docs/SPECIFICATION.md)** — update when API signatures, requirements, or behavior change
+- **[docs/TESTING_ROADMAP.md](docs/TESTING_ROADMAP.md)** — update when tests are added, removed, or restructured
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — update when build instructions, prerequisites, or project layout change
+
 ## Key Conventions
 
 - **Logging:** Compile-time selectable via `PGPP_USE_ALOG` or `PGPP_USE_STDERR`; defaults to no-op
